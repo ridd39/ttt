@@ -4,9 +4,7 @@ void main() {
   runApp(MyApp());
 }
 
-Function func = (x) {
-  print(x);
-};
+
 
 class MyApp extends StatelessWidget {
   @override
