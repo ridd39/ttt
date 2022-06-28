@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
-  func("hi2");
+
 }
 
 Function func = (x) {
