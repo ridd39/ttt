@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('tuto');
   runApp(MyApp());
 }
 
@@ -28,12 +32,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  var _counter;
 
   void _incrementCounter() {
     setState(() {
       _counter++;
+      Hive.box('tuto').put('key', _counter);
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _counter = Hive.box('tuto').get("key") ?? 0;
+    super.initState();
   }
 
   @override
